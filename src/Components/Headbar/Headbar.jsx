@@ -5,20 +5,12 @@ import {
     InputAdornment 
 } from '@material-ui/core'
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import { makeStyles } from '@material-ui/core/styles';
 
 import { HeadbarUser } from '../User/User'
 
 
-const useStyles = makeStyles((theme)=>({
-    inputRoot: {
-        borderRadius: 30,
-    }
-}))
-
 function SearchBar(props){
 
-    const classes = useStyles()
 
     return (
         <Autocomplete
@@ -26,7 +18,7 @@ function SearchBar(props){
             options={[]}
             freeSolo
             // getOptionLabel={(option) => option.title}
-            style={{ width: "50%", borderColor: "red" }}
+            style={props.style}
             renderInput={(params) => (
                 <div style={{ display: "flex", }}>
                     <TextField
@@ -52,7 +44,7 @@ function SearchBar(props){
 export default function Headbar(props) {
 
     const elementsContainerStyle = {
-        width:"80%",
+        width:"82%",
         height:"100%",
         marginLeft: "auto",
         marginRight: "auto",
@@ -64,11 +56,11 @@ export default function Headbar(props) {
     return (
             <Paper square elevation={0} className={props.className}>
                 <div style={elementsContainerStyle}>
-                <div style={{paddingBottom: "0.5%",}}>
+                <div style={{paddingBottom: "0.5%", width:"22%", paddingLeft: "2%", boxSizing: 'border-box'}}>
                     <img src={'https://upload.wikimedia.org/wikipedia/commons/0/00/Gettr_logo.svg'} alt={'Logo'} />
                 </div>
-                <SearchBar />
-                <HeadbarUser username={'@jorgmassih'} displayName={'Jorge Massih'}/>
+                <SearchBar style={{ width: "48%", borderColor: "red" }}/>
+                <HeadbarUser style={{width: "30%"}}  username={'@jorgmassih'} displayName={'Jorge Massih'}/>
                 </div>
             </Paper>
     )
